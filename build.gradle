@@ -7,6 +7,11 @@
 plugins {
     id 'base'
 }
+task copyMedia(type: Copy) {
+    from file("media")
+    into file("build/media")
+    include("*.png")    
+}
 build.dependsOn('copyMedia')
 task copyMp3(type: Copy) {
     from file("mp3")
