@@ -39,6 +39,7 @@ class PodcastSitePlugin implements Plugin<Project> {
                 task.radioPublic.convention(extension.radioPublic)
                 task.iTunesId.convention(extension.iTunesId)
                 task.spotify.convention(extension.spotify)
+                task.amazon.convention(extension.amazon)
                 task.youtube.convention(extension.youtube)
             }
         })

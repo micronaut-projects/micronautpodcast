@@ -14,6 +14,7 @@ podcastMetadata {
     radioPublic = ''
     applePodcasts = ''
     iTunesId = ''
+    amazon = 'https://music.amazon.co.uk/podcasts/59bb32ad-1c64-4982-8582-31bd8546c994'
     spotify = 'https://open.spotify.com/show/6jnGL4U0t7QqCqQ9LP0lpP'
     pocketCasts=''
     youtube = 'https://www.youtube.com/channel/UCEWZUAC6afuExvl-V-vbRGw'
