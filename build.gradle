@@ -16,7 +16,7 @@ podcastMetadata {
     iTunesId = '1592662619'
     amazon = 'https://music.amazon.co.uk/podcasts/59bb32ad-1c64-4982-8582-31bd8546c994'
     spotify = 'https://open.spotify.com/show/6jnGL4U0t7QqCqQ9LP0lpP'
-    pocketCasts=''
+    pocketCasts='https://pca.st/3u029uf7'
     youtube = 'https://www.youtube.com/channel/UCEWZUAC6afuExvl-V-vbRGw'
     outputDirectory = file('build/dist')
     template = file('assets/templates/index.html')
