@@ -209,7 +209,7 @@ class PodcastSiteTask extends DefaultTask {
         fileText = fileText.replaceAll('@gitter@', gitter.get())
         fileText = fileText.replaceAll('@linkedin@', linkedin.get())
         fileText = fileText.replaceAll('@github@', github.get())
-
+        fileText = fileText.replaceAll('@youtube@', youtube.get())
         fileText = fileText.replaceAll('@podcastName@', (e!= null ? (e.title + ' | ' + podcast.title) : podcast.title))
         fileText = fileText.replaceAll('@podcastDescription@', (e!= null ? (e.description) : podcast.description))
 
