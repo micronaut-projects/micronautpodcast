@@ -39,6 +39,14 @@ class PodcastMetadataExtension {
 
     final RegularFileProperty rssFile
 
+    final Property<String> linkedin
+
+    final Property<String> github
+
+    final Property<String> gitter
+
+    final Property<String> mail
+
     final Property<String> twitter
 
     final Property<String> spotify
@@ -65,6 +73,12 @@ class PodcastMetadataExtension {
                 .convention(project.layout.buildDirectory.dir("podcast"))
         rss = project.objects.property(String)
         artwork = project.objects.property(String)
+
+        linkedin = project.objects.property(String).convention('')
+        github = project.objects.property(String).convention('')
+        gitter = project.objects.property(String).convention('')
+        mail = project.objects.property(String).convention('')
+
         twitter = project.objects.property(String).convention('')
         amazon =  project.objects.property(String).convention('')
         spotify = project.objects.property(String).convention('')

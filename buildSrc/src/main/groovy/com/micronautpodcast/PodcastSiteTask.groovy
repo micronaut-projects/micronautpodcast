@@ -45,6 +45,22 @@ class PodcastSiteTask extends DefaultTask {
 
     @Optional
     @Input
+    final Property<String> mail
+
+    @Optional
+    @Input
+    final Property<String> linkedin
+
+    @Optional
+    @Input
+    final Property<String> github
+
+    @Optional
+    @Input
+    final Property<String> gitter
+
+    @Optional
+    @Input
     final Property<String> rss
 
     @Optional
@@ -89,6 +105,10 @@ class PodcastSiteTask extends DefaultTask {
         rssFile = project.objects.fileProperty()
         rss = project.objects.property(String)
         twitter = project.objects.property(String)
+        github = project.objects.property(String)
+        gitter = project.objects.property(String)
+        linkedin = project.objects.property(String)
+        mail = project.objects.property(String)
         artwork = project.objects.property(String)
         spotify = project.objects.property(String)
         amazon = project.objects.property(String)
@@ -185,6 +205,11 @@ class PodcastSiteTask extends DefaultTask {
         fileText = fileText.replaceAll('@author@', podcast.author)
         fileText = fileText.replaceAll('@podcastUrl@', podcast.link)
         fileText = fileText.replaceAll('@twitter@', twitter.get())
+        fileText = fileText.replaceAll('@mail@', mail.get())
+        fileText = fileText.replaceAll('@gitter@', gitter.get())
+        fileText = fileText.replaceAll('@linkedin@', linkedin.get())
+        fileText = fileText.replaceAll('@github@', github.get())
+
         fileText = fileText.replaceAll('@podcastName@', (e!= null ? (e.title + ' | ' + podcast.title) : podcast.title))
         fileText = fileText.replaceAll('@podcastDescription@', (e!= null ? (e.description) : podcast.description))
 
