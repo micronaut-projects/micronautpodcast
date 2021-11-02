@@ -199,6 +199,11 @@ class PodcastSiteTask extends DefaultTask {
         if (applePodcastId) {
             fileText = fileText.replaceAll('@applePodcastId@', applePodcastId)
         }
+        if (e) {
+            fileText = fileText.replaceAll('@breadcrumbs@', '<div id="breadcrumbs"><div class="container"><a href="https://micronaut.io/">Home</a> » <a href="./index.html">Micronaut Podcast</a> » <span class="breadcrumb_last" aria-current="page">'+ e.title +'</span></div></div>')
+        } else {
+           fileText = fileText.replaceAll('@breadcrumbs@', '')
+        }
         fileText = fileText.replaceAll('@copyright@', podcast.copyright)
         fileText = fileText.replaceAll('@subscribe@', subscribeText(podcast.title))
         fileText = fileText.replaceAll('@artwork@', artwork.getOrNull() ?: podcast.artwork)
@@ -226,12 +231,7 @@ class PodcastSiteTask extends DefaultTask {
             episodeFileText = episodeFileText.replaceAll('@episodedate@', episode.pubDate.substring(0, 'Sat, 29 May 2021'.length()))
             episodeFileText = episodeFileText.replaceAll('@episodesummary@', episode.description)
             episodeFileText = episodeFileText.replaceAll('@episodenotes@', episode.showNotes)
-
-
             episodesText += episodeFileText
-        }
-        if (e != null) {
-            episodesText += '<p class="center"><a href="./index.html">Ir a la página de inicio</a></p>'
         }
         fileText = fileText.replaceAll('@episodes@', episodesText)
         fileText
