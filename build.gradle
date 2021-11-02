@@ -35,7 +35,7 @@ podcast {
     link = 'https://micronautpodcast.com'
     language = 'en'
     copyright = '&#169; 2021 Micronaut Foundation'
-    description = 'Episodes cover a variety of topics surrounding the Micronaut framework.'
+    description = 'Episodes cover a variety of topics (interviews, tips, news...) surrounding the Micronaut framework.'
     author = "Sergio del Amo"
     type = 'EPISODIC'
     owner {
