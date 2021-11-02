@@ -205,6 +205,7 @@ class PodcastSiteTask extends DefaultTask {
         fileText = fileText.replaceAll('@author@', podcast.author)
         fileText = fileText.replaceAll('@podcastUrl@', podcast.link)
         fileText = fileText.replaceAll('@twitter@', twitter.get())
+        fileText = fileText.replaceAll('@rss@', rss.get())
         fileText = fileText.replaceAll('@mail@', mail.get())
         fileText = fileText.replaceAll('@gitter@', gitter.get())
         fileText = fileText.replaceAll('@linkedin@', linkedin.get())
