@@ -31,7 +31,7 @@ buildPodcastSite.dependsOn('podcastFeed')
 
 podcast {
     episodes = file("episodes")
-    title = 'Micronaut Podcast'
+    title = 'The Micronaut Podcast'
     link = 'https://micronautpodcast.com'
     language = 'en'
     copyright = '&#169; 2021 Micronaut Foundation'
@@ -66,7 +66,6 @@ task copyMp3(type: Copy) {
     include("*.mp3")    
 }
 build.dependsOn('copyMp3')
-
 
 task copyFonts(type: Copy) {
     from file("assets/fonts")
