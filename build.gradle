@@ -67,15 +67,6 @@ task copyMp3(type: Copy) {
 }
 build.dependsOn('copyMp3')
 
-task copyFonts(type: Copy) {
-    from file("assets/fonts")
-    into file("build/dist/assets/fonts")    
-    include('*.eot')
-    include('*.svg')
-    include('*.ttf')
-    include('*.woff')
-    include('*.woff2')
-}
 
 task copyImages(type: Copy) {
     from file("assets/images")
@@ -85,16 +76,8 @@ task copyImages(type: Copy) {
     include('*.png')
 }
 
-task copyCss(type: Copy) {
-    from file("assets/css")
-    into file("build/dist/assets/css")    
-    include('*.css')
-}
-
 task copyAssets {
-    dependsOn 'copyCss'
     dependsOn 'copyImages'
-    dependsOn 'copyFonts'
 }
 
 build.dependsOn(copyAssets)
