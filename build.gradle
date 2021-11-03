@@ -67,6 +67,12 @@ task copyMp3(type: Copy) {
 }
 build.dependsOn('copyMp3')
 
+task copyFeed(type: Copy) {
+    from file("build")
+    into file("build/feed")
+    include("rss.xml")    
+}
+build.dependsOn('copyFeed')
 
 task copyImages(type: Copy) {
     from file("assets/images")

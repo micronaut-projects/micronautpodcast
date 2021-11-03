@@ -29,7 +29,7 @@ jobs:
           aws s3 sync build/media s3://media.micronautpodcast.com
       - name: Copy Feed to bucket with the AWS CLI
         run: |
-          aws s3 sync build/rss.xml s3://feed.micronautpodcast.com
+          aws s3 sync build/feed s3://feed.micronautpodcast.com
       - name: Copy MP3 to bucket with the AWS CLI
         run: |
           aws s3 sync build/mp3 s3://mp3.micronautpodcast.com
