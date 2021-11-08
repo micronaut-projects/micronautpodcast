@@ -39,6 +39,14 @@ class PodcastSiteTask extends DefaultTask {
     @InputFile
     final RegularFileProperty episodeTemplate
 
+    @PathSensitive(PathSensitivity.RELATIVE)
+    @InputFile
+    final RegularFileProperty showNotesTemplate
+
+    @PathSensitive(PathSensitivity.RELATIVE)
+    @InputFile
+    final RegularFileProperty audioTemplate
+
     @Optional
     @Input
     final Property<String> twitter
@@ -102,6 +110,8 @@ class PodcastSiteTask extends DefaultTask {
         outputDirectory = project.objects.directoryProperty()
         template = project.objects.fileProperty()
         episodeTemplate = project.objects.fileProperty()
+        showNotesTemplate = project.objects.fileProperty()
+        audioTemplate = project.objects.fileProperty()
         rssFile = project.objects.fileProperty()
         rss = project.objects.property(String)
         twitter = project.objects.property(String)
@@ -222,19 +232,37 @@ class PodcastSiteTask extends DefaultTask {
         String episodesText = ''
         for (Episode episode : (e != null ? [e] : podcast.episodes)) {
             String episodeFileText = episodeTemplate.get().asFile.text
-
-            episodeFileText = episodeFileText.replaceAll('@episodesize@', "${episode.size}")
-            episodeFileText = episodeFileText.replaceAll('@episodeurl@', "${episode.url}")
             episodeFileText = episodeFileText.replaceAll('@seasoncount@', "${episode.season}")
             episodeFileText = episodeFileText.replaceAll('@episodecount@', "${episode.episode}".padLeft(3, '0'))
             episodeFileText = episodeFileText.replaceAll('@episodetitle@', episode.title)
             episodeFileText = episodeFileText.replaceAll('@episodedate@', episode.pubDate.substring(0, 'Sat, 29 May 2021'.length()))
             episodeFileText = episodeFileText.replaceAll('@episodesummary@', episode.description)
-            episodeFileText = episodeFileText.replaceAll('@episodenotes@', episode.showNotes)
+            if (e == null) {
+                episodeFileText = episodeFileText.replaceAll('@episodeAudio@', '')
+                episodeFileText = episodeFileText.replaceAll('@episodeShowNotes@', '')
+            } else {
+                episodeFileText = episodeFileText.replaceAll('@episodeAudio@', audioText(e))
+                episodeFileText = episodeFileText.replaceAll('@episodeShowNotes@', showNotesText(e))
+            }
             episodesText += episodeFileText
         }
         fileText = fileText.replaceAll('@episodes@', episodesText)
         fileText
+    }
+
+    @CompileDynamic
+    String audioText(Episode e) {
+        String episodeFileText = audioTemplate.get().asFile.text
+        episodeFileText = episodeFileText.replaceAll('@episodesize@', "${e.size}")
+        episodeFileText = episodeFileText.replaceAll('@episodeurl@', "${e.url}")
+        episodeFileText
+    }
+
+    @CompileDynamic
+    String showNotesText(Episode e) {
+        String episodeFileText = showNotesTemplate.get().asFile.text
+        episodeFileText = episodeFileText.replaceAll('@episodenotes@', e.showNotes)
+        episodeFileText
     }
 
     @CompileDynamic
@@ -249,7 +277,7 @@ class PodcastSiteTask extends DefaultTask {
         for (int i = 0; i < rss.channel.item.size(); i++) {
             Episode episode = new Episode()
             episode.title = rss.channel.item[i].title.text()
-            episode.description = rss.channel.item[i].description.text()
+            episode.description = rss.channel.item[i].description.text() ?: rss.channel.item[i].summary.text() ?: rss.channel.item[i].get('itunes:summary').text()
             episode.pubDate = rss.channel.item[i].pubDate.text()
             episode.url = rss.channel.item[i].enclosure['@url'].text()
             episode.size = new BigDecimal(rss.channel.item[i].enclosure['@length'].text())

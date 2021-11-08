@@ -25,6 +25,8 @@ podcastMetadata {
     outputDirectory = file('build/dist')
     template = file('assets/templates/index.html')
     episodeTemplate = file('assets/templates/episode.html')
+    audioTemplate = file('assets/templates/audio.html')
+    showNotesTemplate = file('assets/templates/showNotes.html')
     rssFile = file('build/rss.xml')
 }
 buildPodcastSite.dependsOn('podcastFeed')
@@ -52,6 +54,9 @@ podcast {
     block = false
     categories = 'TECHNOLOGY_SOFTWARE_HOWTO'
     explicit = false
+}
+podcastMedia {
+    inputDirectory = file('mp3')
 }
 
 task copyMedia(type: Copy) {

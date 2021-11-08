@@ -33,6 +33,10 @@ class PodcastMetadataExtension {
 
     final RegularFileProperty episodeTemplate
 
+    final RegularFileProperty audioTemplate
+
+    final RegularFileProperty showNotesTemplate
+
     final Property<String> artwork
 
     final Property<String> rss
@@ -69,6 +73,8 @@ class PodcastMetadataExtension {
         rssFile = project.objects.fileProperty()
         template = project.objects.fileProperty()
         episodeTemplate = project.objects.fileProperty()
+        showNotesTemplate = project.objects.fileProperty()
+        audioTemplate = project.objects.fileProperty()
         outputDirectory = project.objects.directoryProperty()
                 .convention(project.layout.buildDirectory.dir("podcast"))
         rss = project.objects.property(String)

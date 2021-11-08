@@ -6,13 +6,17 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.plugins.BasePlugin
+import org.gradle.api.tasks.TaskProvider
 
 @CompileStatic
 class PodcastSitePlugin implements Plugin<Project> {
+    public static final String EXTENSION_NAME_PODCAST_MEDIA = "podcastMedia"
     public static final String EXTENSION_NAME_BUILDINFO = "podcastMetadata"
     public static final String TASK_BUILD = "build"
     public static final String TASK_BUILD_PODCAST_SITE = "buildPodcastSite"
+    public static final String TASK_GEN_EPISODE = "generateEpisode"
     public static final String GROUP_BUILD = "build"
+    public static final String GROUP_PODCAST = "podcast"
     public static final String DESCRIPTION = "Generates a static site for a rss feed"
 
     @Override
@@ -21,7 +25,17 @@ class PodcastSitePlugin implements Plugin<Project> {
 
         PodcastMetadataExtension extension = project.extensions.create(EXTENSION_NAME_BUILDINFO, PodcastMetadataExtension, project)
 
-        def buildInfoTask = project.tasks.register(TASK_BUILD_PODCAST_SITE, PodcastSiteTask, new Action<PodcastSiteTask>() {
+        GenerateEpisodeExtension generateEpisodeExtension = project.extensions.create(EXTENSION_NAME_PODCAST_MEDIA, GenerateEpisodeExtension, project)
+
+        project.tasks.register(TASK_GEN_EPISODE, GenerateEpisodeTask, new Action<GenerateEpisodeTask>() {
+            @Override
+            void execute(GenerateEpisodeTask task) {
+                task.setGroup(GROUP_PODCAST)
+                task.setDescription(DESCRIPTION)
+                task.inputDirectory.convention(generateEpisodeExtension.inputDirectory)
+            }
+        })
+        project.tasks.register(TASK_BUILD_PODCAST_SITE, PodcastSiteTask, new Action<PodcastSiteTask>() {
             @Override
             void execute(PodcastSiteTask task) {
                 task.setGroup(GROUP_BUILD)
@@ -29,6 +43,8 @@ class PodcastSitePlugin implements Plugin<Project> {
                 task.template.convention(extension.template)
                 task.rssFile.convention(extension.rssFile)
                 task.episodeTemplate.convention(extension.episodeTemplate)
+                task.audioTemplate.convention(extension.audioTemplate)
+                task.showNotesTemplate.convention(extension.showNotesTemplate)
                 task.outputDirectory.convention(extension.outputDirectory)
                 task.twitter.convention(extension.twitter)
                 task.mail.convention(extension.mail)
