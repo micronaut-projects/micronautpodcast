@@ -13,23 +13,33 @@ jobs:
           java-version: 11
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Coyp mp3
+          run: ./gradlew copyMp3
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Copy HTML to bucket with the AWS CLI
-        run: |
-          aws s3 sync build/dist s3://www.micronautpodcast.com
-      - name: Copy media to bucket with the AWS CLI
-        run: |
-          aws s3 sync build/media s3://media.micronautpodcast.com
-      - name: Copy Feed to bucket with the AWS CLI
-        run: |
-          aws s3 sync build/feed s3://feed.micronautpodcast.com
       - name: Copy MP3 to bucket with the AWS CLI
         run: |
           aws s3 sync build/mp3 s3://mp3.micronautpodcast.com
+      - name: Coyp media
+          run: ./gradlew copyMedia
+      - name: Copy media to bucket with the AWS CLI
+        run: |
+          aws s3 sync build/media s3://media.micronautpodcast.com
+      - name: Build with Gradle
+        run: ./gradlew build
+      - name: Copy HTML to bucket with the AWS CLI
+        run: |
+          aws s3 sync build/dist s3://www.micronautpodcast.com
+      - name: Copy Feed to bucket with the AWS CLI
+        run: |
+          aws s3 sync build/feed s3://feed.micronautpodcast.com
+      - name: Invalidate Feed
+        run: |
+          aws cloudfront create-invalidation --distribution-id EN745QS9RJ3SL --paths "/rss.xml"
+      - name: Invalidate HTML Index
+        run: |
+          aws cloudfront create-invalidation --distribution-id EGOAO4Z1F04D8 --paths "/index.html"
