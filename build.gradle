@@ -16,7 +16,7 @@ podcastMetadata {
     rss = 'https://feed.micronautpodcast.com/rss.xml'
     twitter = 'micronautfw'
     radioPublic = 'https://radiopublic.com/micronaut-podcast-8XQ3Dq'
-    applePodcasts = 'https://podcasts.apple.com/es/podcast/micronaut-podcast/id1592662619'
+    applePodcasts = 'https://podcasts.apple.com/podcast/micronaut-podcast/id1592662619'
     iTunesId = '1592662619'
     amazon = 'https://music.amazon.co.uk/podcasts/59bb32ad-1c64-4982-8582-31bd8546c994'
     spotify = 'https://open.spotify.com/show/6jnGL4U0t7QqCqQ9LP0lpP'
