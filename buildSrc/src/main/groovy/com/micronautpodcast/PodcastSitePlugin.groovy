@@ -31,7 +31,7 @@ class PodcastSitePlugin implements Plugin<Project> {
             @Override
             void execute(GenerateEpisodeTask task) {
                 task.setGroup(GROUP_PODCAST)
-                task.setDescription(DESCRIPTION)
+                task.setDescription("generate an episode markdown file for the newest mp3")
                 task.inputDirectory.convention(generateEpisodeExtension.inputDirectory)
             }
         })
