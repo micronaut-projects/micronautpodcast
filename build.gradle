@@ -9,7 +9,7 @@ apply plugin: PodcastSitePlugin
 
 podcastMetadata {
     github = 'https://github.com/micronaut-projects/'
-    gitter = 'https://gitter.im/micronautfw/'
+    gitter = 'https://matrix.to/#/#micronautfw_questions:gitter.im'
     mail = 'info@micronaut.io'
     linkedin='https://www.linkedin.com/showcase/micronaut/'
     artwork = 'https://media.micronautpodcast.com/artwork-landscape.png'
