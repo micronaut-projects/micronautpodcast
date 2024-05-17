@@ -13,7 +13,7 @@ podcastMetadata {
     mail = 'info@micronaut.io'
     linkedin='https://www.linkedin.com/showcase/micronaut/'
     artwork = 'https://micronautpodcast.com/artwork-landscape.png'
-    rss = 'https://feed.micronautpodcast.com/rss.xml'
+    rss = 'https://micronautpodcast.com/rss.xml'
     twitter = 'micronautfw'
     radioPublic = 'https://radiopublic.com/micronaut-podcast-8XQ3Dq'
     applePodcasts = 'https://podcasts.apple.com/podcast/micronaut-podcast/id1592662619'
