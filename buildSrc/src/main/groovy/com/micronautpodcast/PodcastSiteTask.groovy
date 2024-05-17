@@ -196,7 +196,7 @@ class PodcastSiteTask extends DefaultTask {
         Integer buttonWidth,          
         String image,
         Integer buttonHeight = null) {    
-        '<a href="' + link + '" title="Subscribe to ' + podcastName + ' via ' + service + '" '+ (buttonWidth != null ? 'width="' + buttonWidth + '"' : '') + '><img src="./assets/images/' + image + '" alt="' + service + '" width="' + buttonWidth + '"' + (buttonHeight != null ? (' height="' + buttonHeight + '"') : '' ) + '></a>'
+        '<a href="' + link + '" title="Subscribe to ' + podcastName + ' via ' + service + '"><img ' + (buttonWidth != null ? 'width="' + buttonWidth + '"' : '') + ' src="./assets/images/' + image + '" alt="' + service + '" width="' + buttonWidth + '"' + (buttonHeight != null ? (' height="' + buttonHeight + '"') : '' ) + '></a>'
     }
 
     @CompileDynamic
