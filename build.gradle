@@ -21,7 +21,7 @@ podcastMetadata {
     amazon = 'https://music.amazon.com/podcasts/59bb32ad-1c64-4982-8582-31bd8546c994'
     spotify = 'https://open.spotify.com/show/6jnGL4U0t7QqCqQ9LP0lpP'
     pocketCasts='https://pca.st/3u029uf7'
-    youtube = 'https://www.youtube.com/@MicronautFramework'
+    youtube = 'https://www.youtube.com/playlist?list=PLzR4N8lGQvWjkgMfm-Fr1DskyPYZ79YSL'
     outputDirectory = file('build/dist')
     template = file('assets/templates/index.html')
     episodeTemplate = file('assets/templates/episode.html')
