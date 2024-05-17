@@ -12,7 +12,7 @@ podcastMetadata {
     gitter = 'https://matrix.to/#/#micronautfw_questions:gitter.im'
     mail = 'info@micronaut.io'
     linkedin='https://www.linkedin.com/showcase/micronaut/'
-    artwork = 'https://media.micronautpodcast.com/artwork-landscape.png'
+    artwork = 'https://micronautpodcast.com/artwork-landscape.png'
     rss = 'https://feed.micronautpodcast.com/rss.xml'
     twitter = 'micronautfw'
     radioPublic = 'https://radiopublic.com/micronaut-podcast-8XQ3Dq'
@@ -45,7 +45,7 @@ podcast {
         email = "marketing@micronaut.io"
     }
     image {
-        url = "https://media.micronautpodcast.com/artwork.png"
+        url = "https://micronautpodcast.com/artwork.png"
         link = 'https://micronautpodcast.com'
         title = 'Micronaut Podcast'
         width = 3000
