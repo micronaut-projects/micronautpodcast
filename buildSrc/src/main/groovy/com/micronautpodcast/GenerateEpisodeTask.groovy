@@ -80,7 +80,7 @@ class GenerateEpisodeTask extends DefaultTask {
                 System.out.println("title: " + mp3.getTitle());
                 System.out.println("season: " + season);
                 System.out.println("episode: " + episode);
-                System.out.println("enclosureUrl: https://mp3.micronautpodcast.com/" + latestMp3File.name);
+                System.out.println("enclosureUrl: https://micronautpodcast.com/" + latestMp3File.name);
                 System.out.println("summary: " + mp3.getAlbum());
                 System.out.println("pubDate: " + now);
                 System.out.println("episodeType: FULL");
